@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte"
 
-  let canvas
+  export let canvas = undefined
 
   onMount(() => {
     const ctx = canvas.getContext("2d")
@@ -12,4 +12,4 @@
   })
 </script>
 
-<canvas bind:this={canvas} width={320} height={320} />
+<canvas bind:this={canvas} />
