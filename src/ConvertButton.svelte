@@ -1,6 +1,10 @@
 <script>
+  import { convert } from "./convert"
+
+  export let canvas = undefined
+
   const handleClick = () => {
-    console.log("clicked")
+    convert(canvas)
   }
 </script>
 

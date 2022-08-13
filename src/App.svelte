@@ -35,6 +35,6 @@
     <Canvas bind:canvas />
   </div>
   <div>
-    <ConvertButton />
+    <ConvertButton {canvas} />
   </div>
 </main>
