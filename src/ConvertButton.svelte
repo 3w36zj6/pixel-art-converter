@@ -1,10 +1,12 @@
 <script>
   import { convert } from "./convert"
 
-  export let canvas = undefined
+  export let originalCanvas = undefined
+  export let convertedCanvas = undefined
+  export let k = undefined
 
   const handleClick = () => {
-    convert(canvas)
+    convert(originalCanvas, convertedCanvas, k)
   }
 </script>
 

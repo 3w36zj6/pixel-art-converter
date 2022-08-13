@@ -1,22 +1,51 @@
 <script lang="ts">
-  import Canvas from "./Canvas.svelte"
+  import OriginalCanvas from "./OriginalCanvas.svelte"
+  import ConvertedCanvas from "./ConvertedCanvas.svelte"
   import ConvertButton from "./ConvertButton.svelte"
 
+  import { convert } from "./convert"
+
   let files
-  let canvas
+  let originalCanvas
+  let originalImage
+  let convertedCanvas
+
+  let k = 4
+  let downScale = 4
 
   const loadImage = () => {
     const reader = new FileReader()
-    reader.readAsDataURL(files[0])
-    reader.onload = () => {
-      const img = new Image()
-      img.src = reader.result as string
+    if (files && files[0]) {
+      reader.readAsDataURL(files[0])
+      reader.onload = () => {
+        const img = new Image()
+        img.src = reader.result as string
 
-      img.onload = () => {
-        canvas.width = img.naturalWidth
-        canvas.height = img.naturalHeight
-        const ctx = canvas.getContext("2d")
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+        img.onload = () => {
+          originalImage = reader.result
+          originalCanvas.width = img.naturalWidth / downScale
+          originalCanvas.height = img.naturalHeight / downScale
+          convertedCanvas.width = img.naturalWidth / downScale
+          convertedCanvas.height = img.naturalHeight / downScale
+
+          const originalContext = originalCanvas.getContext("2d")
+          const convertedContext = convertedCanvas.getContext("2d")
+          originalContext.drawImage(
+            img,
+            0,
+            0,
+            originalCanvas.width,
+            originalCanvas.height
+          )
+          convertedContext.drawImage(
+            img,
+            0,
+            0,
+            originalCanvas.width,
+            originalCanvas.height
+          )
+          convert(originalCanvas, convertedCanvas, k)
+        }
       }
     }
   }
@@ -25,16 +54,36 @@
 <main>
   <h1>Pixel Art Converter</h1>
   <input type="file" bind:files on:change={loadImage} />
-
-  {#if files && files[0]}
-    <p>
-      {files[0].name}
-    </p>
-  {/if}
+  <h2>Parameter</h2>
   <div>
-    <Canvas bind:canvas />
+    <p>k={k}</p>
+    <input type="range" bind:value={k} on:change={loadImage} min="2" max="32" />
   </div>
   <div>
-    <ConvertButton {canvas} />
+    <p>downscale={downScale}</p>
+    <input
+      type="range"
+      bind:value={downScale}
+      on:change={loadImage}
+      min="1"
+      max="16"
+    />
+  </div>
+  <div>
+    <ConvertButton {originalCanvas} {convertedCanvas} {k} />
+  </div>
+  <h2>Image</h2>
+  <div>
+    <img src={originalImage} alt="" />
+    <OriginalCanvas bind:canvas={originalCanvas} />
+  </div>
+  <div>
+    <ConvertedCanvas bind:canvas={convertedCanvas} />
   </div>
 </main>
+
+<style>
+  img {
+    width: 400px;
+  }
+</style>
