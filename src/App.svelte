@@ -53,6 +53,7 @@
 
 <main>
   <h1>Pixel Art Converter</h1>
+  <p>k-means法を用いたドット絵コンバーターです。初期値を乱数によって決定するため実行毎に結果が変わります。</p>
   <input type="file" bind:files on:change={loadImage} />
   <h2>Parameter</h2>
   <div>
