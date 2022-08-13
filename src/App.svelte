@@ -1,5 +1,6 @@
 <script lang="ts">
   import Canvas from "./Canvas.svelte"
+  import ConvertButton from "./ConvertButton.svelte"
 
   let files
 </script>
@@ -15,5 +16,8 @@
   {/if}
   <div>
     <Canvas />
+  </div>
+  <div>
+    <ConvertButton />
   </div>
 </main>
