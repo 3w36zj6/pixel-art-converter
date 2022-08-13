@@ -6,7 +6,7 @@
 
 <style>
   canvas {
-    width: 400px;
+    width: 500px;
     image-rendering: pixelated;
   }
 </style>

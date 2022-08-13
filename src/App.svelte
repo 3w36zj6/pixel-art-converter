@@ -79,8 +79,6 @@
   <div>
     <img src={originalImage} alt="" />
     <OriginalCanvas bind:canvas={originalCanvas} />
-  </div>
-  <div>
     <ConvertedCanvas bind:canvas={convertedCanvas} />
   </div>
   <h2>Twitterでつぶやく</h2>
@@ -99,7 +97,7 @@
 
 <style>
   img {
-    width: 400px;
+    width: 500px;
   }
 
   input[type="range"] {
