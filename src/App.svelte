@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Canvas from "./Canvas.svelte"
+
   let files
 </script>
 
@@ -11,4 +13,7 @@
       {files[0].name}
     </p>
   {/if}
+  <div>
+    <Canvas />
+  </div>
 </main>
