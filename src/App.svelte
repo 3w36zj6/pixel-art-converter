@@ -53,7 +53,9 @@
 
 <main>
   <h1>Pixel Art Converter</h1>
-  <p>k-means法を用いたドット絵コンバーターです。初期値を乱数によって決定するため実行毎に結果が変わります。</p>
+  <p>
+    k-means法を用いたドット絵コンバーターです。初期値を乱数によって決定するため実行毎に結果が変わります。
+  </p>
   <input type="file" bind:files on:change={loadImage} />
   <h2>Parameter</h2>
   <div>
@@ -81,10 +83,26 @@
   <div>
     <ConvertedCanvas bind:canvas={convertedCanvas} />
   </div>
+  <h2>Twitterでつぶやく</h2>
+  <p>
+    画像は自動で挿入されません。ダウンロードまたはクリップボードにコピーしてから添付してください。
+  </p>
+  <ul>
+    <li>
+      <a
+        href="https://twitter.com/intent/tweet?hashtags=pixelart&amp;text=ドット絵コンバーター%20/%20Pixel%20Art%20Converter&amp;url={location.toString()}"
+        >Tweet</a
+      >
+    </li>
+  </ul>
 </main>
 
 <style>
   img {
+    width: 400px;
+  }
+
+  input[type="range"] {
     width: 400px;
   }
 </style>
