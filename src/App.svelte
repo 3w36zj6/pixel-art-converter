@@ -93,6 +93,15 @@
       >
     </li>
   </ul>
+  <h2>View on GitHub</h2>
+  <p>
+    <a href="https://github.com/3w36zj6/pixel-art-converter"
+      ><img
+        alt="pixel-art-converter"
+        src="https://gh-card.dev/repos/3w36zj6/pixel-art-converter.svg"
+      /></a
+    >
+  </p>
 </main>
 
 <style>
